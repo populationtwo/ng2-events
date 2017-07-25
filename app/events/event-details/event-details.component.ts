@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {EventService} from '../shared/event.service';
 
 @Component({
-    templateUrl: 'event-details.component.html',
+    templateUrl: 'app/events/event-details/event-details.component.html',
     styles: [`
 		.container {
 			padding-left: 20px;
@@ -16,6 +16,8 @@ import {EventService} from '../shared/event.service';
 })
 
 export class EventDetailsComponent implements OnInit {
+    event: any
+
     constructor(private eventService: EventService) {
 
     }
