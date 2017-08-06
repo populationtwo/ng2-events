@@ -16,6 +16,8 @@ import {Router} from "@angular/router"
 })
 
 export class CreateEventComponent implements OnInit {
+
+    isDirty:boolean = true
     constructor(private router: Router) {
     }
 
@@ -25,4 +27,6 @@ export class CreateEventComponent implements OnInit {
     cancel() {
         this.router.navigate(['/events'])
     }
+
+
 }
