@@ -3,15 +3,18 @@ import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 
 import {
+  EventService,
   EventsListComponent,
   EventThumbnailComponent,
-  EventService,
   EventDetailsComponent,
   CreateEventComponent,
   EventRouteActivator,
   EventListResolver,
   CreateSessionComponent,
-  DurationPipe
+  SessionListComponent,
+  UpvoteComponent,
+  DurationPipe,
+    VoterService
 } from "./events/index";
 
 import { EventsAppComponent } from "./events-app.component";
@@ -20,7 +23,7 @@ import { appRoutes } from "../routes";
 import { Error404Component } from "./errors/404.component";
 import { AuthService } from "./user/auth.service";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { SessionListComponent } from "./events/event-details/session-list.component";
+
 import {
   JQ_TOKEN,
   TOASTR_TOKEN,
@@ -52,7 +55,8 @@ let jQuery = window["$"];
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+      UpvoteComponent
   ],
   providers: [
     EventService,
@@ -61,6 +65,7 @@ let jQuery = window["$"];
     EventRouteActivator,
     EventListResolver,
     AuthService,
+    VoterService,
     { provide: "canDeactivateCreateEvent", useValue: checkDirtyState }
   ],
   bootstrap: [EventsAppComponent]
