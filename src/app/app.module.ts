@@ -1,6 +1,8 @@
-import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import {
   EventService,
@@ -14,7 +16,8 @@ import {
   SessionListComponent,
   UpvoteComponent,
   DurationPipe,
-    VoterService
+  VoterService,
+  LocationValidator
 } from "./events/index";
 
 import { EventsAppComponent } from "./events-app.component";
@@ -22,15 +25,15 @@ import { NavBarComponent } from "./nav/nav-bar.component";
 import { appRoutes } from "../routes";
 import { Error404Component } from "./errors/404.component";
 import { AuthService } from "./user/auth.service";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import {
   JQ_TOKEN,
   TOASTR_TOKEN,
   Toastr,
-  CollapsibleWellComponent, SimpleModalComponent,
+  CollapsibleWellComponent,
+  SimpleModalComponent,
   ModalTriggerDirective
-} from './common/index';
+} from "./common/index";
 
 let toastr: Toastr = window["toastr"];
 let jQuery = window["$"];
@@ -40,7 +43,8 @@ let jQuery = window["$"];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   declarations: [
     EventsAppComponent,
@@ -56,7 +60,8 @@ let jQuery = window["$"];
     DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective,
-      UpvoteComponent
+    UpvoteComponent,
+    LocationValidator
   ],
   providers: [
     EventService,
