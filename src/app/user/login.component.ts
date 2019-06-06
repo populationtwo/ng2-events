@@ -1,33 +1,40 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from './auth.service';
-import {Router} from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { AuthService } from "./auth.service";
+import { Router } from "@angular/router";
 
 @Component({
-    templateUrl: './login.component.html',
-    styles: [`
-    em {float: right; color:#E05C65; padding-left: 10px;}
-    `]
+  templateUrl: "./login.component.html",
+  styles: [
+    `
+      em {
+        float: right;
+        color: #e05c65;
+        padding-left: 10px;
+      }
+    `
+  ]
 })
-
 export class LoginComponent implements OnInit {
-    userName;
-    password;
-    constructor(private authService:AuthService, private router: Router) {
-    }
+  userName;
+  password;
+  loginInvalid = false;
+  constructor(private authService: AuthService, private router: Router) {}
 
-    ngOnInit() {
-    }
+  ngOnInit() {}
 
-    login(formValues){
-        this.authService.loginUser(
-            formValues.userName,
-            formValues.password
-        );
-        this.router.navigate(['events']);
+  login(formValues) {
+    this.authService
+      .loginUser(formValues.userName, formValues.password)
+      .subscribe(resp => {
+        if (!resp) {
+          this.loginInvalid = true;
+        } else {
+          this.router.navigate(["events"]);
+        }
+      });
+  }
 
-    }
-
-    cancel(){
-        this.router.navigate(['events']);
-    }
+  cancel() {
+    this.router.navigate(["events"]);
+  }
 }
