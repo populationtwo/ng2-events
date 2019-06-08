@@ -35,8 +35,8 @@ import {
   ModalTriggerDirective
 } from "./common/index";
 
-let toastr: Toastr = window["toastr"];
-let jQuery = window["$"];
+const toastr: Toastr = window["toastr"];
+const jQuery = window["$"];
 
 @NgModule({
   imports: [
